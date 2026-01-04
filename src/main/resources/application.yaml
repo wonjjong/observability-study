@@ -1,3 +1,33 @@
 spring:
   application:
     name: observability-study
+  security:
+    user:
+      name: wonjjong
+      password: 1234
+
+management:
+  endpoints:
+    web:
+      base-path: /monitoring/actuator
+      exposure:
+        include: health, info, prometheus, loggers, metrics, threaddump # 기본으로 health, info만 활성화 됨
+    access:
+      default: none
+  endpoint:
+    health:
+      access: read_only
+      show-details: always
+    info:
+      access: read_only
+    prometheus:
+      access: read_only
+    loggers:
+      access: read_only
+    metrics:
+      access: read_only
+    threaddump:
+      access: read_only
+  server:
+    port: 9091
+
