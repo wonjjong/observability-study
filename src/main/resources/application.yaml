@@ -1,3 +1,8 @@
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
 spring:
   application:
     name: observability-study
@@ -7,7 +12,15 @@ spring:
       password: 1234
 
 management:
+  observations:
+    http:
+      server:
+        requests:
+          enabled: true
   endpoints:
+    jmx:
+      exposure:
+        exclude: "*"
     web:
       base-path: /monitoring/actuator
       exposure:
@@ -28,6 +41,7 @@ management:
       access: read_only
     threaddump:
       access: read_only
+
   server:
     port: 9091
 
