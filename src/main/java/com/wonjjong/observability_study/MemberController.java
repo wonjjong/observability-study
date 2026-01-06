@@ -3,10 +3,7 @@ package com.wonjjong.observability_study;
 import io.micrometer.core.annotation.Counted;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -26,5 +23,12 @@ public class MemberController {
     public void deleteMember() {
         log.info("memberController >> deleteMember");
         memberService.deleteMember();
+    }
+
+    @GetMapping
+    public String getMember() {
+        log.info("memberController >> getMember");
+        memberService.getMember();
+        return "success";
     }
 }
