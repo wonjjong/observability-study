@@ -39,6 +39,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-opentelemetry-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	implementation("org.springframework.boot:spring-boot-starter-aspectj")
+
 }
 
 tasks.withType<Test> {
