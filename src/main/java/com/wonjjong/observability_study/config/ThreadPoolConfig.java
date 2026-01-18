@@ -24,6 +24,21 @@ public class ThreadPoolConfig {
 
         return ExecutorServiceMetrics.monitor(meterRegistry, executor.getThreadPoolExecutor(), "myThreadPool");
     }
+
+    @Bean
+    public Executor mySecondThreadPoolExecutor(MeterRegistry meterRegistry) {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+
+        executor.setCorePoolSize(10);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(1000);
+        executor.setKeepAliveSeconds(1000);
+        executor.setThreadNamePrefix("my-second-thread-pool-");
+        executor.initialize();
+
+        return ExecutorServiceMetrics.monitor(meterRegistry, executor.getThreadPoolExecutor(), "mySecondThreadPool");
+    }
+
 //
 //    @Bean
 //    public void myThreadPoolMetricConfig(ThreadPoolTaskExecutor myThreadPoolExecutor, MeterRegistry meterRegistry) {
