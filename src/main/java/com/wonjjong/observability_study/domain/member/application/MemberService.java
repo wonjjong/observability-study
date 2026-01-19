@@ -1,5 +1,6 @@
-package com.wonjjong.observability_study;
+package com.wonjjong.observability_study.domain.member.application;
 
+import com.wonjjong.observability_study.domain.member.model.Member;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
