@@ -6,20 +6,25 @@ server:
 spring:
   docker:
     compose:
-      lifecycle-management: start_only # 컨테이너를 켜기만 하고 연결 정보 주입은 안 함
+      lifecycle-management: start_only
   datasource:
+    url: jdbc:mysql://host.docker.internal:3306/observability_study
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      jdbc-url: jdbc:mysql://host.docker.internal:3306/observability_study
-      username: root
-      password: password
-      driver-class-name: com.mysql.cj.jdbc.Driver
       pool-name: my-hikari-pool
       maximum-pool-size: 10
-      minimum-idle: 10 # 보통 max와 동일하게 설정
+      minimum-idle: 10
       connection-timeout: 30000
       max-lifetime: 1800000
       keepalive-time: 60000
       idle-timeout: 10000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
   application:
     name: observability-study
