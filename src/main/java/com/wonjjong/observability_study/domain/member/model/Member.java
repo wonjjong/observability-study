@@ -44,7 +44,7 @@ public class Member extends AbstractEntity {
 
         member.status = MemberStatus.PENDING;
 
-        member.detail = MemberDetail.create();
+        member.detail = MemberDetail.create(member);
 
         return member;
     }
