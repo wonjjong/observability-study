@@ -8,8 +8,8 @@ spring:
     compose:
       lifecycle-management: start_only
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/observability_study
-    username: root
+    url: jdbc:mysql://localhost:3306/observability_study
+    username: username
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
