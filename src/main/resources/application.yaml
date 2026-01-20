@@ -6,7 +6,8 @@ server:
 spring:
   docker:
     compose:
-      lifecycle-management: start_only
+#      lifecycle-management: start_only
+      lifecycle-management: start_and_stop
   datasource:
     url: jdbc:mysql://localhost:3306/observability_study
     username: username

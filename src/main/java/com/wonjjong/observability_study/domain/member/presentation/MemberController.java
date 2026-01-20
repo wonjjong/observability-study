@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -27,9 +29,12 @@ public class MemberController {
     }
 
     @GetMapping
-    public String getMember() {
-        log.info("memberController >> getMember");
-        memberService.getMember();
-        return "success";
+    public List<MemberResponseDto> getAllMember () {
+        return memberService.getAllMember().stream().map(MemberResponseDto::of).toList();
+    }
+
+    @GetMapping("/cache")
+    public List<MemberResponseDto> getAllMemberUsingCache () {
+        return memberService.getAllMemberUsingCache().stream().map(MemberResponseDto::of).toList();
     }
 }

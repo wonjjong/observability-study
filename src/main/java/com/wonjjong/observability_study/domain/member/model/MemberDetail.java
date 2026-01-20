@@ -32,7 +32,7 @@ public class MemberDetail extends AbstractEntity {
     private LocalDateTime deactivatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id", nullable = false) // DB 외래키 컬럼명
+    @JoinColumn(name = "member_id", nullable = false) // DB 외래키 컬럼명
     private Member member;
 
     protected static MemberDetail create(Member member) {
