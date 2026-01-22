@@ -2,6 +2,7 @@ package com.wonjjong.observability_study.domain.member.infrastructure;
 
 import com.wonjjong.observability_study.domain.member.model.Member;
 import com.wonjjong.observability_study.domain.member.model.MemberRegisterRequest;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -22,11 +23,15 @@ public class MemberDataInitializer implements ApplicationRunner {
     private static final int TOTAL_MEMBERS = 100;
 
     private final MemberRepository memberRepository;
+    private final EntityManager entityManager;
     private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) {
+        memberRepository.deleteAll();
+        entityManager.flush();
+
         log.info("Member 테스트 데이터 {}건 생성 시작...", TOTAL_MEMBERS);
 
         List<Member> members = new ArrayList<>(BATCH_SIZE);
