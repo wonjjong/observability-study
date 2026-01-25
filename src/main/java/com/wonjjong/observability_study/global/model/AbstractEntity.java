@@ -9,12 +9,12 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
-
+import java.io.Serializable;
 import java.util.Objects;
 
 @MappedSuperclass
 @ToString(callSuper = true)
-public abstract class AbstractEntity {
+public abstract class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter(onMethod_ = {@Nullable})

@@ -1,8 +1,9 @@
 package com.wonjjong.observability_study.domain.member.model;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-public record Profile(String address) {
+public record Profile(String address) implements Serializable {
     private static final Pattern PROFILE_ADDRESS_PATTERN =
             Pattern.compile("[a-z0-9]+");
 
