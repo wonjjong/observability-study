@@ -2,10 +2,7 @@ package com.wonjjong.observability_study.domain.member.model;
 
 
 import com.wonjjong.observability_study.global.model.AbstractEntity;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +14,7 @@ import java.util.Objects;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberDetail extends AbstractEntity {
     @Embedded // Profile 클래스에 정의된 필드들이 MEMBER 테이블의 컬럼으로 생성됩니다.
@@ -31,7 +28,7 @@ public class MemberDetail extends AbstractEntity {
 
     private LocalDateTime deactivatedAt;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false) // DB 외래키 컬럼명
     private Member member;
 

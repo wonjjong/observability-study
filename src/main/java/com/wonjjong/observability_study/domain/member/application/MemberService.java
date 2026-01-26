@@ -46,6 +46,6 @@ public class MemberService {
 
     @Cacheable("member")
     public List<Member> getAllMemberUsingCache() {
-        return memberRepository.findAll();
+        return memberRepository.findAllWithDetail();
     }
 }
